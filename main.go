@@ -1,5 +1,10 @@
 package main
 
 func main() {
-	print(lengthOfLongestSubstring("123456"))
+	// 测试切片
+	s := "Hello,World"
+	s2 := s[0:3]
+	print(s2)
+	s2[0] = 'X'
+	print(s2)
 }
