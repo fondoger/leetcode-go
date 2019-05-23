@@ -3,15 +3,14 @@ package main
 import "reflect"
 
 func main() {
-	nums := []string{
-		"42",
-		"   -42",
-		"4193 with words",
-		"words and 987",
-		"-91283472332",
+	nums := []int{
+		0,
+		12321,
+		-12321,
+		111,
 	}
 	print(reflect.TypeOf('A').String())
 	for _, num := range nums {
-		print(num, " >>> ", myAtoi(num), "\n")
+		print(num, " >>> ", isPalindrome(num), "\n")
 	}
 }
