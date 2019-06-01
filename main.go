@@ -1,10 +1,13 @@
 package main
 
 func main() {
-	text := "ababa"
-	words := []string{"aba", "ab"}
-	res := indexPairs(text, words)
-	for _, pair := range res {
-		println(pair[0], pair[1])
-	}
+	workers := [][]int{{0, 0}, {1, 1}, {2, 0}}
+	bikes := [][]int{{1, 0}, {2, 2}, {2, 1}}
+	res := assignBikes(workers, bikes)
+	println(res)
+
+	workers2 := [][]int{{0, 0}, {2, 1}}
+	bikes2 := [][]int{{1, 2}, {3, 3}}
+	res2 := assignBikes(workers2, bikes2)
+	println(res2)
 }
