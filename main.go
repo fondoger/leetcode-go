@@ -1,14 +1,10 @@
 package main
 
 func main() {
-	nums := []int{
-		3,
-		4,
-		9,
-		58,
-		1994,
-	}
-	for _, num := range nums {
-		print(num, " >>> ", intToRoman(num), "\n")
+	text := "ababa"
+	words := []string{"aba", "ab"}
+	res := indexPairs(text, words)
+	for _, pair := range res {
+		println(pair[0], pair[1])
 	}
 }
