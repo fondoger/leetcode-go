@@ -2,18 +2,13 @@ package main
 
 func main() {
 	{
-		list := []int{1, 2, 3, 4, 5, 6}
-		head := buildLinkedList(list)
-		printLinkedList(head)
-		newHead := removeNthFromEnd(head, 1)
-		printLinkedList(newHead)
-
-	}
-	{
-		list := []int{7, 8, 9, 10, 11}
-		head := buildLinkedList(list)
-		printLinkedList(head)
-		newHead := removeNthFromEnd(head, 5)
-		printLinkedList(newHead)
+		list1 := []int{1, 3, 5, 7, 9}
+		list2 := []int{3, 4, 5, 6, 7}
+		l1 := buildLinkedList(list1)
+		l2 := buildLinkedList(list2)
+		printLinkedList(l1)
+		printLinkedList(l2)
+		listHead := mergeTwoLists(l1, l2)
+		printLinkedList(listHead)
 	}
 }
