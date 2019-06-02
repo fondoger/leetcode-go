@@ -1,13 +1,19 @@
 package main
 
 func main() {
-	workers := [][]int{{0, 0}, {1, 1}, {2, 0}}
-	bikes := [][]int{{1, 0}, {2, 2}, {2, 1}}
-	res := assignBikes(workers, bikes)
-	println(res)
+	{
+		list := []int{1, 2, 3, 4, 5, 6}
+		head := buildLinkedList(list)
+		printLinkedList(head)
+		newHead := removeNthFromEnd(head, 1)
+		printLinkedList(newHead)
 
-	workers2 := [][]int{{0, 0}, {2, 1}}
-	bikes2 := [][]int{{1, 2}, {3, 3}}
-	res2 := assignBikes(workers2, bikes2)
-	println(res2)
+	}
+	{
+		list := []int{7, 8, 9, 10, 11}
+		head := buildLinkedList(list)
+		printLinkedList(head)
+		newHead := removeNthFromEnd(head, 5)
+		printLinkedList(newHead)
+	}
 }
