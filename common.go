@@ -26,3 +26,12 @@ func printLinkedList(head *ListNode) {
 	}
 	println()
 }
+
+// 调用元素默认的toString()方法
+func printIntArray(arr []int) {
+	print("Array: ")
+	for _, item := range arr {
+		print(item, " ")
+	}
+	println()
+}
