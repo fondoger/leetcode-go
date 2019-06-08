@@ -2,9 +2,9 @@ package main
 
 func main() {
 	{
-		list1 := []int{1, 2, 3, 3, 4, 4, 5}
+		list1 := []int{1, 4, 3, 2, 5, 2}
 		l1 := buildLinkedList(list1)
 		printLinkedList(l1)
-		printLinkedList(deleteDuplicates(l1))
+		printLinkedList(partition(l1, 3))
 	}
 }
