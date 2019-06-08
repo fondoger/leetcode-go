@@ -12,10 +12,49 @@
  */
 package main
 
-import "sort"
+import (
+	"container/heap"
+	"sort"
+)
+
+type MinHeap []*ListNode              // 提供一个切片用作堆元素的容器
+func (h MinHeap) Len() int            { return len(h) }
+func (h MinHeap) Less(i, j int) bool  { return h[i].Val < h[j].Val }
+func (h MinHeap) Swap(i, j int)       { h[i], h[j] = h[j], h[i] } // 喜欢这个语法糖
+func (h *MinHeap) Push(x interface{}) { *h = append(*h, x.(*ListNode)) }
+func (h *MinHeap) Pop() interface{} {
+	old := *h
+	n := len(old)
+	x := old[n-1]
+	*h = old[0 : n-1]
+	return x
+}
+
+/* Solution 3: 构造最小堆 时间复杂度 */
+func mergeKLists(lists []*ListNode) *ListNode {
+	priorityQueue := make(MinHeap, 0, len(lists))
+	for _, list := range lists {
+		if list != nil {
+			priorityQueue = append(priorityQueue, list)
+		}
+	}
+	heap.Init(&priorityQueue) // 为什么用指针呢？因为会修改切片的指向
+	dummy := new(ListNode)
+	cur := dummy
+	for priorityQueue.Len() > 0 {
+		//head := priorityQueue.Pop().(*ListNode) // 错误！
+		head := heap.Pop(&priorityQueue).(*ListNode)
+		cur.Next = head
+		cur = cur.Next
+		if head.Next != nil {
+			heap.Push(&priorityQueue, head.Next)
+		}
+	}
+	return dummy.Next
+}
 
 /* Solution 2: 全部放入列表排序 时间复杂度O(nk*log nk) */
-func mergeKLists(lists []*ListNode) *ListNode {
+func mergeKLists_2(lists []*ListNode) *ListNode {
 	array := make([]*ListNode, 0, 100)
 	// step1: put all nodes into a list
 	for _, list := range lists {
