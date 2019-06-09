@@ -10,13 +10,20 @@ type ListNode struct {
 	Next *ListNode
 }
 
-// 输入：int[]数组
+// 输入："[3,2,0,-4]"
 // 输出：ListNode单向链表
-func buildLinkedList(nums []int) *ListNode {
+func buildLinkedList(str string) *ListNode {
+	str = strings.Replace(str, " ", "", -1)
+	str = str[1 : len(str)-1] // 去除[]中括号
+	items := strings.Split(str, ",")
 	dummy := new(ListNode)
 	cur := dummy
-	for _, val := range nums {
-		cur.Next = &ListNode{val, nil}
+	for _, item := range items {
+		value, err := strconv.Atoi(item)
+		if err != nil {
+			panic(err)
+		}
+		cur.Next = &ListNode{value, nil}
 		cur = cur.Next
 	}
 	return dummy.Next
@@ -24,20 +31,28 @@ func buildLinkedList(nums []int) *ListNode {
 
 // 打印 ListNode 单向链表
 func printLinkedList(head *ListNode) {
-	print("List: ")
-	for head != nil {
-		print(head.Val, " ")
-		head = head.Next
+	print("List: [")
+	cur := head
+	count := 0
+	for cur != nil {
+		if cur != head {
+			print(",")
+		}
+		print(cur.Val)
+		cur = cur.Next
+		count++
 	}
+	print("]", ", size=", count)
 	println()
 }
 
 // 调用元素默认的toString()方法
 func printIntArray(arr []int) {
-	print("Array: ")
+	print("Array: [")
 	for _, item := range arr {
 		print(item, " ")
 	}
+	print("]", ", length=", len(arr))
 	println()
 }
 
