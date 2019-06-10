@@ -12,7 +12,7 @@ package main
  *     Next *ListNode
  * }
  */
-func isPalindrome(head *ListNode) bool {
+func isPalindrome_REMOVE_THIS(head *ListNode) bool {
 	if head == nil || head.Next == nil {
 		return true
 	}
@@ -23,16 +23,7 @@ func isPalindrome(head *ListNode) bool {
 		slow = slow.Next
 	}
 	// Step 2: Reverse the list behind
-	dummy := new(ListNode)
-	dummy.Next = slow.Next
-	cur := dummy.Next
-	for cur.Next != nil {
-		tmp := cur.Next
-		cur.Next = cur.Next.Next
-		tmp.Next = dummy.Next
-		dummy.Next = tmp
-	}
-	head2 := dummy.Next
+	head2 := reverseLinkedList(slow.Next)
 	slow.Next = nil // !important
 	for head != nil && head2 != nil {
 		if head.Val != head2.Val {
@@ -42,4 +33,12 @@ func isPalindrome(head *ListNode) bool {
 		head2 = head2.Next
 	}
 	return true
+}
+
+func reverseLinkedList(head *ListNode) *ListNode {
+	var tail *ListNode = nil
+	for head != nil {
+		head, tail, head.Next = head.Next, head, tail
+	}
+	return tail
 }
