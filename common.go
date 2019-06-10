@@ -49,11 +49,31 @@ func printLinkedList(head *ListNode) {
 	println()
 }
 
+// 输入："[-1, 0, 1, 2, -1, -4]"
+// 返回：整数数组
+func buildIntArray(str string) []int {
+	str = strings.Replace(str, " ", "", -1)
+	str = str[1 : len(str)-1] // 去除左右中括号
+	items := strings.Split(str, ",")
+	res := make([]int, len(items))
+	for i, item := range items {
+		value, err := strconv.Atoi(item)
+		if err != nil {
+			panic(err)
+		}
+		res[i] = value
+	}
+	return res
+}
+
 // 调用元素默认的toString()方法
 func printIntArray(arr []int) {
 	print("Array: [")
-	for _, item := range arr {
-		print(item, " ")
+	for i, item := range arr {
+		if i != 0 {
+			print(",")
+		}
+		print(item)
 	}
 	print("]", ", length=", len(arr))
 	println()
