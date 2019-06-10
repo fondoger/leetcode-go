@@ -15,6 +15,9 @@ type ListNode struct {
 func buildLinkedList(str string) *ListNode {
 	str = strings.Replace(str, " ", "", -1)
 	str = str[1 : len(str)-1] // 去除[]中括号
+	if str == "" {
+		return nil
+	}
 	items := strings.Split(str, ",")
 	dummy := new(ListNode)
 	cur := dummy
