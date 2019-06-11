@@ -1,5 +1,6 @@
 package main
 
+<<<<<<< HEAD
 import (
 	"fmt"
 	"reflect"
@@ -64,4 +65,9 @@ func main() {
 	test("C3", C3)
 	test("C2", C2)
 	test("C1", C1)
+=======
+func main() {
+	arr := buildIntArray("[-1, 2, 1, -4]")
+	println(threeSumClosest(arr, 1))
+>>>>>>> 8cebf84ab2402b818677e9a70bfdc43858dd9ff8
 }
