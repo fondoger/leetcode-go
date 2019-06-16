@@ -1,8 +1,8 @@
 package main
 
 func main() {
-	arr := buildIntArray("[1,3,-1,-3,5,3,6,7]")
+	arr := buildIntArray("[1,0,2,3,0,4,5,0]")
 	printIntArray(arr)
-	res := maxSlidingWindow(arr, 3)
-	printIntArray(res)
+	duplicateZeros(arr)
+	printIntArray(arr)
 }
