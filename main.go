@@ -1,8 +1,8 @@
 package main
 
 func main() {
-	arr := buildIntArray("[1,0,2,3,0,4,5,0]")
-	printIntArray(arr)
-	duplicateZeros(arr)
-	printIntArray(arr)
+	arr := buildIntArray("[1,2,3]")
+	for _, arr := range(permute(arr)) {
+		printIntArray(arr)
+	}
 }
