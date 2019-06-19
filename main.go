@@ -2,9 +2,8 @@ package main
 
 func main() {
 	if true {
-		arr := buildIntArray("[2,1,2]")
-		for _, arr := range permuteUnique(arr) {
-			printIntArray(arr)
-		}
+		arr := buildIntArray("[1,0,2,3,0,4,5,0]")
+		duplicateZeros(arr)
+		printIntArray(arr)
 	}
 }

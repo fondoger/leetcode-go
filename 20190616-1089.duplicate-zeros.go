@@ -1,6 +1,26 @@
 package main
 
-func duplicateZeros(arr []int) {
+/*
+大佬们都是用两个数组完成的
+*/
+func duplicateZeros(nums []int) {
+	copied := make([]int, len(nums))
+	copy(copied, nums)
+	m, n := 0, 0
+	for n < len(nums) {
+		nums[n] = copied[m]
+		n++
+		m++
+		if copied[m] == 0 && n < len(copied) {
+			nums[n] = 0
+			n++
+		}
+	}
+}
+
+/* 下面是我用队列实现的蠢办法 */
+
+func duplicateZeros_1(arr []int) {
 	queue := make(Queue, 0, 10)
 	for i := 0; i < len(arr); i++ {
 		if len(queue) != 0 {
