@@ -6,42 +6,19 @@ package main
  * [15] 3Sum
  */
 
-func qsort(nums []int, low, high int) {
-	if low >= high {
-		return
-	}
-	i, j := low, high
-	mid := low + (high-low)/2
-	nums[low], nums[mid] = nums[mid], nums[low] // 在i处挖坑
-	pivot := nums[low]
-	for i < j {
-		for i < j && nums[j] >= pivot {
-			j--
-		}
-		nums[i] = nums[j]
-		for i < j && nums[i] <= pivot {
-			i++
-		}
-		nums[j] = nums[i]
-	}
-	nums[i] = pivot
-	qsort(nums, low, i-1)
-	qsort(nums, i+1, high)
-}
-
 func threeSum(nums []int) [][]int {
+	qsort_15(nums, 0, len(nums)-1)
 	res := make([][]int, 0, 10)
-	qsort(nums, 0, len(nums)-1)
 	for i := 0; i < len(nums); i++ {
 		if i != 0 && nums[i] == nums[i-1] {
 			continue
 		}
-		target := -nums[i]
 		low, high := i+1, len(nums)-1
 		for low < high {
-			if nums[low]+nums[high] < target {
+			sum := nums[low] + nums[high] + nums[i]
+			if sum < 0 {
 				low++
-			} else if nums[low]+nums[high] > target {
+			} else if sum > 0 {
 				high--
 			} else {
 				res = append(res, []int{nums[i], nums[low], nums[high]})
@@ -57,4 +34,26 @@ func threeSum(nums []int) [][]int {
 		}
 	}
 	return res
+}
+
+func qsort_15(nums []int, low, high int) {
+	if low >= high {
+		return
+	}
+	i, j, pivot := low, high, nums[(low+high)/2]
+	for i < j {
+		for nums[j] > pivot {
+			j--
+		}
+		for nums[i] < pivot {
+			i++
+		}
+		if i <= j {
+			nums[i], nums[j] = nums[j], nums[i]
+			i++
+			j--
+		}
+	}
+	qsort_15(nums, low, j)
+	qsort_15(nums, i, high)
 }
