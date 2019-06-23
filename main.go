@@ -1,48 +1,29 @@
 package main
 
+type MountainArray []int
+
+func (this *MountainArray) get(index int) int { return (*this)[index] }
+func (this *MountainArray) length() int       { return len(*this) }
+
 func main() {
 	if true {
-		nums := [][]int{
-			buildIntArray("[2,1,5]"),
-			buildIntArray("[3,3,7]"),
-		}
-
-		println(carPooling(nums, 4))
+		nums := buildIntArray("[1,2,3,4,5,3,1]")
+		mountain := MountainArray(nums)
+		println(findInMountainArray(3, &mountain))
 	}
 	if true {
-		nums := [][]int{
-			buildIntArray("[2,1,5]"),
-			buildIntArray("[3,3,7]"),
-		}
-
-		println(carPooling(nums, 5))
+		nums := buildIntArray("[0,1,2,4,2,1]")
+		mountain := MountainArray(nums)
+		println(findInMountainArray(3, &mountain))
 	}
 	if true {
-		nums := [][]int{
-			buildIntArray("[2,1,5]"),
-			buildIntArray("[3,5,7]"),
-		}
-
-		println(carPooling(nums, 3))
+		nums := buildIntArray("[1,2,3,4,5,4,3,2,1]")
+		mountain := MountainArray(nums)
+		println(findInMountainArray(3, &mountain))
 	}
 	if true {
-		nums := [][]int{
-			buildIntArray("[3,2,7]"),
-			buildIntArray("[3,7,9]"),
-			buildIntArray("[8,3,9]"),
-		}
-
-		println(carPooling(nums, 11))
-	}
-	if true {
-		nums := [][]int{
-			buildIntArray("[8,2,3]"),
-			buildIntArray("[4,1,3]"),
-			buildIntArray("[1,3,6]"),
-			buildIntArray("[8,4,6]"),
-			buildIntArray("[4,4,8]"),
-		}
-
-		println(carPooling(nums, 12))
+		nums := buildIntArray("[3,5,3,2,0]")
+		mountain := MountainArray(nums)
+		println(findInMountainArray(0, &mountain)) //
 	}
 }
