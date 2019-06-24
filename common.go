@@ -170,3 +170,9 @@ func buildBinaryTree(str string) *TreeNode {
 func printBinaryTree(root *TreeNode) {
 	println(serializeBinaryTree(root))
 }
+
+// MountainArray 第1095题专用数据结构
+type MountainArray []int
+
+func (m *MountainArray) get(index int) int { return (*m)[index] }
+func (m *MountainArray) length() int       { return len(*m) }
