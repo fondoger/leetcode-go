@@ -2,12 +2,12 @@ package main
 
 func main() {
 	if true {
-		t1 := buildBinaryTree("[1,2,2,3,4,4,3] ")
-		println(isSymmetric(t1))
+		t1 := buildBinaryTree("[3,9,20,null,null,15,7]")
+		for _, row := range levelOrder(t1) {
+			printIntArray(row)
+		}
 	}
-	if true {
-		t1 := buildBinaryTree("[1,2,2,null,3,null,3] ")
-		println(isSymmetric(t1))
-	}
-
+	tmp := []int{1, 2, 3}
+	copi := tmp[:]
+	println(cap(copi))
 }
