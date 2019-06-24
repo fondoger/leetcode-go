@@ -2,6 +2,9 @@ package main
 
 func main() {
 	if true {
-		println(numTrees(3))
+		root := buildBinaryTree("[1,3,null,null,2]")
+		printBinaryTree(root)
+		recoverTree(root)
+		printBinaryTree(root)
 	}
 }

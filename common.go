@@ -131,6 +131,7 @@ func strToTreeNode(str string) *TreeNode {
 }
 
 func deserializeBinaryTree(str string) *TreeNode {
+	str = strings.Replace(str, " ", "", -1)
 	str = str[1 : len(str)-1] // 去除[]中括号
 	items := strings.Split(str, ",")
 	root := strToTreeNode(items[0])
