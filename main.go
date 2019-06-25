@@ -2,7 +2,9 @@ package main
 
 func main() {
 	if true {
-		t1 := buildBinaryTree("[3,9,20,null,null,15,7]")
-		println(maxDepth(t1))
+		pre := buildIntArray("[3,9,20,15,7]")
+		in := buildIntArray(" [9,3,15,20,7]")
+		tree := buildTree(pre, in)
+		printBinaryTree(tree)
 	}
 }
