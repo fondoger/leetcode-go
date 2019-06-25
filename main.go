@@ -2,9 +2,7 @@ package main
 
 func main() {
 	if true {
-		tree := buildBinaryTree("[3,9,20,null,null,15,7]")
-		for _, row := range levelOrderBottom(tree) {
-			printIntArray(row)
-		}
+		nums := buildIntArray(" [-10,-3,0,5,9]")
+		printBinaryTree(sortedArrayToBST(nums))
 	}
 }
