@@ -20,8 +20,7 @@ package main
  *     Right *TreeNode
  * }
  */
-
-var dummy = new(ListNode)
+var dummy = &ListNode{9527, nil}
 
 func sortedListToBST(head *ListNode) *TreeNode {
 	if head == nil {
@@ -30,13 +29,14 @@ func sortedListToBST(head *ListNode) *TreeNode {
 	dummy.Next = head
 	slow, fast := dummy, dummy
 	for fast.Next != nil && fast.Next.Next != nil {
-		fast = fast.Next.Next
 		slow = slow.Next
+		fast = fast.Next.Next
 	}
-	mid := slow.Next
+	root := &TreeNode{slow.Next.Val, nil, nil}
+	head2 := slow.Next.Next
 	slow.Next = nil
-	root := &TreeNode{mid.Val, nil, nil}
-	root.Left = sortedListToBST(dummy.Next)
-	root.Right = sortedListToBST(mid.Next)
+	head1 := dummy.Next
+	root.Left = sortedListToBST(head1)
+	root.Right = sortedListToBST(head2)
 	return root
 }
