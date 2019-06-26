@@ -2,12 +2,9 @@ package main
 
 func main() {
 	if true {
-		root := &TreeNode{1, nil, nil}
-		root.Left = &TreeNode{2, nil, nil}
-		root.Left.Right = &TreeNode{4, nil, nil}
-		root.Right = &TreeNode{3, nil, nil}
-		root.Right.Left = &TreeNode{1, nil, nil}
-		root.Right.Right = &TreeNode{5, nil, nil}
-		printBinaryTree(root)
+		root := buildBinaryTree("[5,4,8,11,null,13,4,7,2,null,null,5,1]")
+		for _, list := range pathSum(root, 22) {
+			printIntArray(list)
+		}
 	}
 }
