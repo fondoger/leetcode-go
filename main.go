@@ -2,9 +2,11 @@ package main
 
 func main() {
 	if true {
-		root := buildBinaryTree("[3,5,1,6,2,0,8,null,null,7,4]")
-		five := root.Left
-		four := root.Left.Right.Right
-		println(lowestCommonAncestor(root, five, four).Val)
+		root := buildBinaryTree("[10,5,-3,3,2,null,11,3,-2,null,1]")
+		println(pathSum437(root, 8))
+	}
+	if true {
+		root := buildBinaryTree("[1,null,2,null,3,null,4,null,5]")
+		println(pathSum437(root, 3))
 	}
 }
