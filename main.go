@@ -2,7 +2,11 @@ package main
 
 func main() {
 	if true {
-		root := buildBinaryTree("[5,3,6,2,4,null,7]")
-		printBinaryTree(deleteNode450(root, 3))
+		matrix := [][]int{
+			buildIntArray("[1,2,3]"),
+			buildIntArray("[4,5,6]"),
+			buildIntArray("[7,8,9]"),
+		}
+		rotate(matrix)
 	}
 }
