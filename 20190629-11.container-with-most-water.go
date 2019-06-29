@@ -1,25 +1,16 @@
+package main
+
 /*
  * @lc app=leetcode id=11 lang=golang
  *
  * [11] Container With Most Water
  */
-package main
-
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
-
 func maxArea(height []int) int {
-	best := 0
 	left, right := 0, len(height)-1
+	best := 0
 	for left < right {
-		area := (right - left) * min(height[left], height[right])
-		if area > best {
-			best = area
-		}
+		area := min11(height[left], height[right]) * (right - left)
+		best = max11(best, area)
 		if height[left] < height[right] {
 			left++
 		} else {
@@ -27,4 +18,17 @@ func maxArea(height []int) int {
 		}
 	}
 	return best
+}
+
+func min11(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
+func max11(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
 }
