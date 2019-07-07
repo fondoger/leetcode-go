@@ -2,7 +2,11 @@ package main
 
 func main() {
 	if true {
-		s := "babad"
-		println(longestPalindrome(s))
+		nums := [][]int{
+			{1, 3}, {2, 6}, {8, 10}, {15, 18},
+		}
+		for _, val := range merge(nums) {
+			printIntArray(val)
+		}
 	}
 }
