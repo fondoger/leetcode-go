@@ -2,11 +2,13 @@ package main
 
 func main() {
 	if true {
-		nums := [][]int{
-			{1, 3}, {2, 6}, {8, 10}, {15, 18},
-		}
-		for _, val := range merge(nums) {
-			printIntArray(val)
-		}
+		A := buildIntArray("[1,2,3,2,1]")
+		B := buildIntArray("[3,2,1,4,7]")
+		println(findLength(A, B))
+	}
+	if true {
+		A := buildIntArray("[0,0,0,0,1]")
+		B := buildIntArray("[1,0,0,0,0]")
+		println(findLength(A, B) == 4)
 	}
 }
