@@ -19,7 +19,7 @@ func wordBreak139_1(s string, wordDict []string) bool {
 			return true
 		}
 
-		for i := 1; i < len(s)-1; i++ {
+		for i := 1; i < len(s); i++ {
 			_, ok := hashSet[s[:i]]
 			if ok && helper139(s[i:len(s)]) {
 				return true
@@ -32,12 +32,33 @@ func wordBreak139_1(s string, wordDict []string) bool {
 	return helper139(s)
 }
 
-// 方法2: 递归 + memo
-
+// 方法2: 递归 + memo(方法1的改进)
 func wordBreak(s string, wordDict []string) bool {
 	hashSet := make(map[string]interface{})
 	for _, w := range wordDict {
 		hashSet[w] = nil
 	}
 	memo := make(map[string]bool)
+
+	var helper139 func(string) bool
+	helper139 = func(s string) bool {
+		if val, ok := memo[s]; ok {
+			return val
+		}
+		if _, ok := hashSet[s]; ok {
+			memo[s] = true
+			return true
+		}
+		for i := 1; i < len(s); i++ {
+			_, ok := hashSet[s[:i]]
+			if ok && helper139(s[i:len(s)]) {
+				memo[s] = true
+				return true
+			}
+		}
+		memo[s] = false
+		return false
+	}
+
+	return helper139(s)
 }
