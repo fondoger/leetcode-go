@@ -33,7 +33,7 @@ func wordBreak139_1(s string, wordDict []string) bool {
 }
 
 // 方法2: 递归 + memo(方法1的改进)
-func wordBreak(s string, wordDict []string) bool {
+func wordBreak139_2(s string, wordDict []string) bool {
 	hashSet := make(map[string]interface{})
 	for _, w := range wordDict {
 		hashSet[w] = nil
@@ -61,4 +61,30 @@ func wordBreak(s string, wordDict []string) bool {
 	}
 
 	return helper139(s)
+}
+
+// 方法3: 一维动态规划
+// f(i) 表示从[0,i)范围内是否合法
+// 则 f(j) = f(i) && Contains(s[i:j))
+func wordBreak(s string, words []string) bool {
+	hashSet := make(map[string]interface{})
+	for _, w := range words {
+		hashSet[w] = nil
+	}
+	contains := func(t string) bool {
+		_, ok := hashSet[t]
+		return ok
+	}
+
+	dp := make([]bool, len(s)+1)
+	dp[0] = true
+	for i := 1; i <= len(s); i++ {
+		for j := 0; j < i; j++ {
+			if dp[j] && contains(s[j:i]) {
+				dp[i] = true
+				break
+			}
+		}
+	}
+	return dp[len(s)]
 }
