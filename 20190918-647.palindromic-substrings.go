@@ -14,7 +14,7 @@ func countSubstrings(s string) int {
 	return res
 }
 
-//
+// easy
 func spread(s string, i, j int) int {
 	for i >= 0 && j < len(s) && s[i] == s[j] {
 		i--
